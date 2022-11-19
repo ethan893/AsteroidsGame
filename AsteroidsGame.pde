@@ -34,6 +34,9 @@ public void draw()
     if (key == 'h') {
       bob.setCenterX((int)(Math.random()*1001));
       bob.setCenterY((int)(Math.random()*1001));
+ bob.setXspeed(0);
+      bob.setYspeed(0);
+      bob.setPointDirection((int)(Math.random()*360));
     }
     if(key == 'w')
       w = true;
