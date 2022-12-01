@@ -1,17 +1,36 @@
 Star [] a = new Star[200];
 Spaceship bob = new Spaceship();
+ArrayList <Asteroid> b = new ArrayList <Asteroid>();
+Asteroid c = new Asteroid();
+Asteroid g = new Asteroid();
+Asteroid f = new Asteroid();
+Asteroid h = new Asteroid();
+Asteroid p = new Asteroid();
 boolean w,e,s,d;
 public void setup()
 {
  size(1000,1000);
+ b.add(c);
+ b.add(g);
+ b.add(f);
+ b.add(h);
+ b.add(p);
  for(int i = 0; i < 200; i++) {
    a[i] = new Star ();
  }
 }
 public void draw()
 {
+  
   bob.show();
  background(255);
+ for(int j = 0; j < b.size(); j++) {
+   b.get(j).move();
+   b.get(j).show();
+   float q = dist((float)bob.getX(),(float)bob.getY(), (float)b.get(j).getX(),(float)b.get(j).getY());
+   if(q < 10)
+   b.remove(j);
+ }
  for(int i = 0; i < a.length; i++) {
    a[i].show();
  }
