@@ -92,4 +92,6 @@ public void draw()
       e = false;
     if(key == 'd') 
       d = false;
+      if(key == ' ')
+      r = false;
  }
