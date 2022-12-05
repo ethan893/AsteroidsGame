@@ -7,7 +7,7 @@ Asteroid g = new Asteroid();
 Asteroid f = new Asteroid();
 Asteroid h = new Asteroid();
 Asteroid p = new Asteroid();
-boolean w,e,s,d;
+boolean w,e,s,d,r;
 public void setup()
 {
  size(1000,1000);
@@ -32,7 +32,7 @@ public void draw()
     if(dist((float)shots.get(a).getX(),(float)shots.get(a).getY(), (float)b.get(c).getX(), (float)b.get(c).getY()) < 10) {
       shots.remove(a);
       b.remove(c);
-     break;
+   break;
     }
  }
   }
@@ -60,6 +60,9 @@ public void draw()
    if(d == true) {
      bob.turn(25);
    }
+   if(r == true) {
+     shots.add(new Bullet(bob));
+   }
 }
  public void keyPressed() {
     if (key == 'h') {
@@ -78,7 +81,7 @@ public void draw()
     else if(key == 'd') 
       d = true;
       else if(key == ' ') 
-      shots.add(new Bullet(bob));
+      r = true;
  }
  public void keyReleased() {
    if(key == 'w')
