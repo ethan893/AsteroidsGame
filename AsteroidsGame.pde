@@ -1,6 +1,7 @@
 Star [] a = new Star[200];
 Spaceship bob = new Spaceship();
 ArrayList <Asteroid> b = new ArrayList <Asteroid>();
+ArrayList <Bullet> shots = new ArrayList <Bullet> ();
 Asteroid c = new Asteroid();
 Asteroid g = new Asteroid();
 Asteroid f = new Asteroid();
@@ -21,9 +22,20 @@ public void setup()
 }
 public void draw()
 {
-  
-  bob.show();
  background(255);
+ for(int p = 0; p < shots.size(); p++)  {
+    shots.get(p).show();
+    shots.get(p).move();
+ }
+  for(int a = 0; a < shots.size(); a++) {
+    for(int c = 0; c < b.size(); c++) {
+    if(dist((float)shots.get(a).getX(),(float)shots.get(a).getY(), (float)b.get(c).getX(), (float)b.get(c).getY()) < 10) {
+      shots.remove(a);
+      b.remove(c);
+     break;
+    }
+ }
+  }
  for(int j = 0; j < b.size(); j++) {
    b.get(j).move();
    b.get(j).show();
@@ -37,10 +49,10 @@ public void draw()
    bob.show();
    bob.move();
    if(w == true) {
-     bob.accelerate(.5);
+     bob.accelerate(.2);
    }
    if(s == true) {
-    bob.accelerate(-.5);
+    bob.accelerate(-.2);
    }
    if(e == true) {
      bob.turn(-25);
@@ -59,12 +71,14 @@ public void draw()
     }
     if(key == 'w')
       w = true;
-    if(key == 's') 
+    else if(key == 's') 
       s = true;
-    if(key == 'a') 
+    else if(key == 'a') 
       e = true;
-    if(key == 'd') 
+    else if(key == 'd') 
       d = true;
+      else if(key == ' ') 
+      shots.add(new Bullet(bob));
  }
  public void keyReleased() {
    if(key == 'w')
